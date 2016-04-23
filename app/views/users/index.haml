@@ -1,0 +1,12 @@
+%div.userlist
+  %table{border: 1}
+    %thead
+      %tr
+      - User.column_names.each do |c|
+        %td= c
+    %tbody
+      - @users.each do |row|
+        %tr
+          - row.attributes.values.each do |column|
+            %td= column
+
