@@ -56,4 +56,5 @@ bower.json
 /test
 /vendor
 
-/.idea
+.idea
+*.pyc

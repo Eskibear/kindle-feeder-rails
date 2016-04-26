@@ -11,16 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423074451) do
+ActiveRecord::Schema.define(version: 20160426141038) do
+
+  create_table "books", force: :cascade do |t|
+    t.string   "title"
+    t.text     "desc"
+    t.string   "lang"
+    t.string   "feed_enc"
+    t.string   "page_enc"
+    t.string   "masthead_path"
+    t.string   "cover_path"
+    t.integer  "oldest_article"
+    t.integer  "creator"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "feeds", force: :cascade do |t|
-    t.integer  "user_id"
-    t.boolean  "enable",      default: false
-    t.string   "url"
+    t.integer  "book_id"
     t.string   "title"
-    t.text     "description"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.string   "url"
+    t.boolean  "fulltext",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -29,6 +42,17 @@ ActiveRecord::Schema.define(version: 20160423074451) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
+
+  create_table "schedules", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.integer  "period"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "schedules", ["book_id"], name: "index_schedules_on_book_id"
+  add_index "schedules", ["user_id"], name: "index_schedules_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
