@@ -11,6 +11,7 @@ class MyResp:
     def __init__(self, a, b):
         self.status_code = a
         self.content = b
+        self.headers= {}
 
 
 
@@ -82,6 +83,7 @@ class URLOpener:
         self.initHeaders = headers
     
     def open(self, url, data=None, headers=None):
+        print url
         self.realurl = url
         maxRedirect = self.maxRedirect
         

@@ -1,0 +1,9 @@
+== README
+=== Requirements
+* python2
+* python2-pillow
+* python2-beautifulsoup4
+* python2-chardet
+* python2-lxml
+* python2-cssselect
+* python2-cssutils

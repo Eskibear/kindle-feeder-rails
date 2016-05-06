@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
-    # UserMailer.test.deliver_now
     render :index
   end
 

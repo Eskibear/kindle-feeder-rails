@@ -58,3 +58,4 @@ bower.json
 
 .idea
 *.pyc
+*.swp

@@ -8,7 +8,7 @@ import __builtin__, logging
 default_log = logging.getLogger()
 __builtin__.__dict__['default_log'] = default_log
 class RailsBook:
-    def __init__(hs):
+    def __init__(self, hs):
         self.title = hs['title']
         self.masthead_path = hs['masthead_path']
         self.cover_path = hs['cover_path']
@@ -17,7 +17,8 @@ class RailsBook:
         self.feeds = hs['feeds']
         self.oldest_article = hs['oldest_article']
 
-def GET(bk):
+
+def createMobi(bk):
     opts = makeoeb.getOpts('kindlepw')
     oeb = makeoeb.CreateOeb(default_log, None, opts)
 
@@ -56,7 +57,7 @@ def GET(bk):
     book.oldest_article = bk.oldest_article
     book.fulltext_by_readability = True
     feeds = bk.feeds
-    book.feeds = [(feed.title, feed.url, feed.fulltext) for feed in feeds]
+    book.feeds = [(feed["title"], feed["url"], feed["fulltext"]) for feed in feeds]
 
     try:
         for sec_or_media, url, title, content, brief, thumbnail in book.Items(opts):
@@ -86,7 +87,7 @@ def GET(bk):
         o = MOBIOutput()
         o.convert(oeb, oIO, opts, default_log)
 
-        of_name = "/tmp/"+ title + time.strftime("%Y-%m-%d_%H%M", time.localtime()) + ".mobi"
+        of_name = "/tmp/"+ time.strftime("%Y-%m-%d_%H%M%S", time.localtime()) + ".mobi"
         with open(of_name, "w") as f:
             f.write(str(oIO.getvalue()))
         return of_name

@@ -13,6 +13,8 @@ class ZhihuDaily(BaseFeedBook):
     page_encoding         = "utf-8"
     mastheadfile = "mh_zhihudaily.gif"
     coverfile = "cv_zhihudaily.jpg"
+    masthead_path = "mh_zhihudaily.gif"
+    cover_path = "cv_zhihudaily.jpg"
     oldest_article        = 1
     feeds = [
             (u'知乎日报', 'http://zhihudaily.dev.malash.net/', True)
