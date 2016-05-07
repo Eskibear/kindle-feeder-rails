@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
-  get 'feed/show'
-
-  get 'feed/index'
-
-  get 'feed/edit'
-
   devise_for :users
+
   root to: "users#index"
-  resources :users
-  resources :books
+  resources :users do
+    resource :profile
+  end
+
+  resources :books do
+    resources :feeds
+  end
+
   resources :schedules
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

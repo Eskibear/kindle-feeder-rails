@@ -1,0 +1,16 @@
+%table
+  %thead
+    %tr
+      - Feed.column_names.each do |c|
+        %th= c
+      %th= 'operation'
+  %tbody
+    - @feeds.each do |feed|
+      %tr
+        - feed.slice(*Feed.column_names).values.each do |v|
+          %td= v
+        %td
+          = link_to 'edit', '#', class: :button
+          = link_to 'drop', '#', class: :button
+
+= link_to 'Add New Feed', '#', class: :button

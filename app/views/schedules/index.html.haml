@@ -1,0 +1,16 @@
+%table
+  %thead
+    %tr
+      - Schedule.column_names.each do |c|
+        %th= c
+      %th= 'operation'
+  %tbody
+    - @schedules.each do |s|
+      %tr
+        - s.slice(*Schedule.column_names).values.each do |v|
+          %td= v
+        %td
+          = link_to 'edit', '#', class: :button
+          = link_to 'drop', '#', class: :button
+
+= link_to 'Add New Schedule', '#', class: :button

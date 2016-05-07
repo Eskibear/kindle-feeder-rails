@@ -59,3 +59,4 @@ bower.json
 .idea
 *.pyc
 *.swp
+.byebug_history

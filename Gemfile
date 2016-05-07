@@ -25,7 +25,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'cancancan', '~> 1.10'
 gem 'devise'
-gem 'haml-rails'
+
+## view
+## {{
+gem 'haml-rails', '~> 0.9.0'                # haml tempalte
+gem 'kaminari', '~> 0.16.3'                 # pagination
+gem 'simple_form', '~> 3.1.0'               # form
+gem 'cocoon', '~> 1.2.0'                    # nested form
+gem 'foundation-rails', '~> 6.2'            # zurb-foundation
+## }}
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -1,0 +1,17 @@
+%table
+  %thead
+    %tr
+      - Book.column_names.each do |c|
+        %th= c
+      %th= 'operation'
+  %tbody
+    - @books.each do |book|
+      %tr
+        - book.slice(*Book.column_names).values.each do |v|
+          %td= v
+        %td
+          = link_to 'Details', book_path(book), class: :button
+          = link_to 'Drop', '#', class: :button
+
+-#= link_to 'Add New Book', '#', class: :button
+%a{'data-open' => 'new_book'}= 'Add New Book'

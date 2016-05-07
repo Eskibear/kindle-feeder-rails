@@ -28,5 +28,10 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+    ## user ||= User.new
+    can :manage, Book, creator: user.id
+    can :manage, Feed do |feed|
+      feed.book.creator==user.id
+    end
   end
 end

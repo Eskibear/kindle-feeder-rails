@@ -1,7 +1,7 @@
 class SchedulesController < ApplicationController
   def index
-    @schedules = Schedule.all
-    render json: @schedules
+    @schedules = Schedule.where(user_id: current_user)
+    render :index
   end
 
   def show
